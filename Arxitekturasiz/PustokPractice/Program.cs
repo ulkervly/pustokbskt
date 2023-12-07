@@ -28,7 +28,7 @@ builder.Services.AddSession(opt =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer("Server=LAPTOP-N2MJ83JU\\SQLEXPRESS;Database=Pustoknew2;Trusted_Connection=True");
+    options.UseSqlServer("Server=DESKTOP-1TG370G;Database=Pustoknew11;Trusted_Connection=True");
 });
 var app = builder.Build();
 
