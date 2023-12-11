@@ -79,11 +79,11 @@ namespace Pustok.MVC.Controllers
                 return View();
             }
 
-            AppUser appUser=new AppUser();
+            AppUser appUser=new AppUser()
             {
-                //FullName = memberRegisterVM.Fullname;
-                //UserName = memberRegisterVM.Username;
-                //Email = memberRegisterVM.Email;
+                FullName = memberRegisterVM.Fullname,
+                UserName = memberRegisterVM.Username,
+                Email = memberRegisterVM.Email
 
             };
 
