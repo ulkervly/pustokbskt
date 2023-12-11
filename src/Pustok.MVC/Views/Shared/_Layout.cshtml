@@ -322,7 +322,10 @@
                             <div class="main-navigation flex-lg-right">
                                 <div class="cart-widget">
                                     <div class="login-block">
-                                        <a href="login-register.html" class="font-weight-bold">Login</a> <br>
+                                        <a href="login-register.html" class="font-weight-bold">
+                                            @User.Identity.IsAuthenticated 
+
+                                        </a> <br>
                                         <span>or</span><a href="login-register.html">Register</a>
                                     </div>
                                     <div class="cart-block">

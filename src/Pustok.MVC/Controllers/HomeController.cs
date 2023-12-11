@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pustok.Core.Models;
 using Pustok.Data.DAL;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 
 namespace Pustok.MVC.Controllers
 {
+    [Authorize(Roles ="Member")]
     public class HomeController : Controller
     {
         private readonly PustokContext _context;

@@ -5,6 +5,9 @@ using Pustok.Core.Repositories.Interfaces;
 using Pustok.Business.Services.Implementations;
 using Pustok.Business.Services.Interfaces;
 using static Pustok.Core.Repositories.Interfaces.IAuthorIRepository;
+using Pustok.Core.Models;
+using Microsoft.AspNetCore.Identity;
+using Pustok.MVC.Areas.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,8 +28,22 @@ builder.Services.AddSession(opt =>
 });
 builder.Services.AddDbContext<PustokContext>(opt =>
 {
-    opt.UseSqlServer("Server=LAPTOP-N2MJ83JU\\SQLEXPRESS;Database=Pustoknew2;Trusted_Connection=True");
+    opt.UseSqlServer("Server=LAPTOP-N2MJ83JU\\SQLEXPRESS;Database=Pustoknew0;Trusted_Connection=True");
 });
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+    opt.Password.RequiredUniqueChars = 0;
+    opt.Password.RequireNonAlphanumeric= true;
+    opt.Password.RequiredLength = 8;
+    opt.Password.RequireDigit= true;
+    opt.Password.RequireLowercase= true;
+    opt.Password.RequireUppercase= true;
+    opt.User.RequireUniqueEmail = false;
+
+}
+).AddEntityFrameworkStores<PustokContext>().AddDefaultTokenProviders();
+builder.Services.AddScoped<LayoutService>();
+
 
 var app = builder.Build();
 
@@ -43,6 +60,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

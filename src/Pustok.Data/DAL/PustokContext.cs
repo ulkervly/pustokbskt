@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pustok.Core.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.ComponentModel;
 
 namespace Pustok.Data.DAL
 {
-    public class PustokContext:DbContext
+    public class PustokContext:IdentityDbContext
     {
         public PustokContext(DbContextOptions<PustokContext> options) : base(options) { }
 
@@ -19,5 +21,7 @@ namespace Pustok.Data.DAL
         public DbSet<Tag> Tags { get; set; }
         public DbSet<BookTag> BookTags { get; set; }
         public DbSet<BookImage> BookImages { get; set; }
+        //public DbSet<Setting>Settings { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
     }
 }
